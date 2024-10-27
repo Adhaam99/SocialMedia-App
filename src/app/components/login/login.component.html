@@ -1,0 +1,71 @@
+<h1 class="text-5xl text-blue-700 font-medium text-center mb-6">LinkedPosts</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="formSubmit()" class="w-3/4 mx-auto bg-white rounded-md p-4">
+
+    <h3 class="text-2xl font-medium text-blue-700 my-3 ">login now</h3>
+
+    <div class="mb-6">
+        <input type="email" id="email" formControlName="email" [ngClass]="
+            {
+
+              'valid':!loginForm.get('email')?.errors && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty) ,
+              'invalid':loginForm.get('email')?.errors && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)
+
+            }
+       " class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Type your email.." required />
+
+        <app-alert [formName]="loginForm" [controlName]="'email'" />
+
+    </div>
+
+
+    <div class="mb-6">
+        <input type="password" id="password" formControlName="password" [ngClass]="
+        {
+
+          'valid':!loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty) ,
+          'invalid':loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)
+
+        }
+   " class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Type your password.." required />
+
+        <app-alert [formName]="loginForm" [controlName]="'password'" />
+
+    </div>
+
+    <div class="w-full flex flex-col md:flex-row gap-4 justify-between items-center">
+
+        <button type="submit" [disabled]="loginForm.invalid" [ngClass]="{
+
+            'bg-gray-300': loginForm.invalid || isLoading ,
+            'bg-blue-700': loginForm.valid || !isLoading ,
+            'hover:bg-blue-800':  !isLoading ,
+
+        }"
+            class="text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600  dark:focus:ring-blue-800">
+
+            SignUp
+
+            @if(isLoading){
+
+            <i class="fas fa-spin fa-spinner"></i>
+
+            }
+        </button>
+
+        @if(msg){
+
+        <p class="text-red-700">{{msg}}</p>
+
+        }
+
+        <div class="flex"> 
+            <p class="text-gray-600 me-1">Not Registerd ? </p>
+            <a routerLink="/register" class="text-blue-700 cursor-pointer"> Create Account</a>
+        </div>
+
+    </div>
+
+</form>

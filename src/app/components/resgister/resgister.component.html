@@ -1,0 +1,135 @@
+<h1 class="text-5xl text-blue-700 font-medium text-center mb-6">LinkedPosts</h1>
+
+<form [formGroup]="registerForm" (ngSubmit)="formSubmit()" class="w-3/4 mx-auto bg-white rounded-md p-4">
+
+    <h3 class="text-2xl font-medium text-blue-700 my-3 ">Register now</h3>
+
+    <div class="mb-6">
+        <input type="text" id="name" formControlName="name" [ngClass]="
+        {
+
+          'valid':!registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty) ,
+          'invalid':registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)
+
+        }
+   "
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Type your name.." required />
+
+        <app-alert [formName]="registerForm" [controlName]="'name'" />
+
+    </div>
+
+
+    <div class="mb-6">
+        <input type="email" id="email" formControlName="email"[ngClass]="
+        {
+
+          'valid':!registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty) ,
+          'invalid':registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)
+
+        }
+   "
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Type your email.." required />
+
+        <app-alert [formName]="registerForm" [controlName]="'email'" />
+
+    </div>
+
+
+    <div class="mb-6">
+        <input type="password" id="password" formControlName="password" [ngClass]="
+        {
+
+          'valid':!registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty) ,
+          'invalid':registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)
+
+        }
+   "
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Type your password.." required />
+
+        <app-alert [formName]="registerForm" [controlName]="'password'" />
+
+    </div>
+
+
+    <div class="mb-6">
+        <input type="password" id="confirmPassword" formControlName="rePassword"[ngClass]="
+        {
+
+          'valid':!registerForm.get('rePassword')?.errors && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty) ,
+          'invalid':registerForm.get('rePassword')?.errors && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty)
+
+        }
+   "
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Confirm password" required />
+
+        <app-alert [formName]="registerForm" [controlName]="'rePassword'" />
+
+    </div>
+
+
+    <div class="relative mb-6">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 20 20">
+                <path
+                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+        </div>
+        <input datepicker id="default-datepicker" type="text" formControlName="dateOfBirth"[ngClass]="
+        {
+
+          'valid':!registerForm.get('dateOfBirth')?.errors && (registerForm.get('dateOfBirth')?.touched || registerForm.get('dateOfBirth')?.dirty) ,
+          'invalid':registerForm.get('dateOfBirth')?.errors && (registerForm.get('dateOfBirth')?.touched || registerForm.get('dateOfBirth')?.dirty)
+
+        }
+   "
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Select date">
+
+        <app-alert [formName]="registerForm" [controlName]="'dateOfBirth'" />
+
+    </div>
+
+
+
+    <div class="flex mb-6">
+        <div class="flex items-center me-4">
+            <input id="inline-radio" type="radio" value="male" name="gender" formControlName="gender" 
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
+        </div>
+        <div class="flex items-center me-4">
+            <input id="inline-2-radio" type="radio" value="female" name="gender" formControlName="gender"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="inline-2-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
+        </div>
+
+    </div>
+
+    <app-alert [formName]="registerForm" [controlName]="'gender'" />
+
+    <div class="w-full flex justify-between items-center">
+
+        <button type="submit" [disabled]="registerForm.invalid" [class.bg-gray-300]="registerForm.invalid || isLoading"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
+            SignUp 
+
+            @if(isLoading){
+
+            <i class="fas fa-spin fa-spinner"></i>
+
+            }
+        </button>
+
+        @if(msg){
+            <p class="text-green-700">{{msg}}</p>
+        }
+    </div>
+
+</form>

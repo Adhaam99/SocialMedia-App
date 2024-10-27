@@ -1,0 +1,60 @@
+@if(formName.get(controlName)?.errors && (formName.get(controlName)?.touched || formName.get(controlName)?.dirty)){
+
+    <ul class="p-4 mb-4 mt-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+       
+        @if (formName.get(controlName)?.getError('required')){
+
+            <li>Field Reauired</li>
+
+        }@else if (formName.get(controlName)?.getError('minLength')) {
+
+            <li>Name must be more than 3 letters</li>
+
+        }@else if (formName.get(controlName)?.getError('maxLength')) {
+            
+            <li>Name must be less than 20 letters</li>
+
+        }@else if (formName.get(controlName)?.getError('email')) {
+    
+            <li>Email must be valid</li>
+
+        }@else if (formName.get(controlName)?.getError('password')) {
+    
+            <li>Password must at least 6 characters & contains special characters </li>
+
+        }@else if (formName.get(controlName)?.getError('compare')) {
+    
+            <li>rePassword must match password</li>
+
+        }@else if (formName.get(controlName)?.getError('oneOf')) {
+    
+            <li>You must choose gender</li>
+
+        }@else if (formName.get(controlName)?.getError('pattern')) {
+
+            <ul>
+
+                @if (controlName=='phone') {
+                    
+                    <li>Phone is Incorrect </li>
+
+                }@else if (controlName=='password') {
+
+                    <li>Password must at least 6 characters </li>
+
+                }@else if (controlName=='city') {
+
+                    <li>City Name must at least 3 characters</li>
+
+                }@else if (controlName=='code') {
+
+                    <li>Code must be 6 characters</li>
+
+                }
+            </ul>
+    
+
+        }
+       
+    </ul>
+}
